@@ -15,8 +15,8 @@ namespace SortTest
 		{
 			std::vector <int> inputVec { 4, 6, 1, 9, 0, 3, 2, 7, 8, 5 };
 			std::vector <int> outputVec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-			heapSort(inputVec);
+			
+			mergeSort(inputVec, 0, inputVec.size());
 
 			for (int i = 0; i < inputVec.size(); ++i)
 			{
@@ -34,8 +34,8 @@ namespace SortTest
 		{
 			std::vector <int> inputVec { 4, 6, 1, 9, 0, 3, 2, 7, 8, 5 };
 			std::vector <int> outputVec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-			mergeSort(inputVec, inputVec[0], inputVec[inputVec.size()-1]);
+			
+			heapSort(inputVec);
 
 			for (int i = 0; i < inputVec.size(); ++i)
 			{

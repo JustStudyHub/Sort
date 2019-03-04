@@ -1,9 +1,6 @@
 #include "pch.h"
-#include <iostream>
 
-using namespace std;
-
-void heap(vector<int> &v, int i, int n)
+void heap(std::vector<int> &v, int i, int n)
 {
 	int maxIndex = i;
 	int childIndex = 0;
@@ -19,36 +16,37 @@ void heap(vector<int> &v, int i, int n)
 			break;
 		else
 		{
-			swap(v[maxIndex], v[i]);
+			std::swap(v[maxIndex], v[i]);
 			i = maxIndex;
 		}
 	}
 }
-void heapSort(vector<int> &v, int n)
+void heapSort(std::vector<int> &v)
 {
-	for (int i = n / 2; i >= 0; --i)
+
+	for (int i = v.size() / 2; i >= 0; --i)
 	{
-		heap(v, i, n);
+		heap(v, i, v.size());
 	}
-	for (int i = n - 1; i >= 1; --i)
+	for (int i = v.size() - 1; i >= 1; --i)
 	{
-		swap(v[0], v[i]);
+		std::swap(v[0], v[i]);
 		heap(v, 0, i);
 	}
 }
-void mergeSort(vector <int> &v, int start, int end)
+void mergeSort(std::vector <int> &v, int start, int end)
 {
 	if (end - start < 2)
 		return;
 	if (end - start == 2)
 	{
 		if (v[start] > v[start + 1])
-			swap(v[start], v[start + 1]);
+			std::swap(v[start], v[start + 1]);
 		return;
 	}
 	mergeSort(v, start, start + (end - start) / 2);
 	mergeSort(v, start + (end - start) / 2, end);
-	vector<int>temp_v;
+	std::vector<int>temp_v;
 	int b1 = start;
 	int e1 = start + (end - start) / 2;
 	int b2 = e1;
@@ -70,40 +68,7 @@ void mergeSort(vector <int> &v, int start, int end)
 		v[i] = temp_v[i - start];
 }
 
-
 int main()
-{
-	vector <int> v;
-	int size = 10;
-	int temp = 0;
-	cout << "HeapSort test:" << endl;
-	for (int i = 0; i < size; ++i)
-	{
-		v[i] = rand() % 100;
-		cout << v[i] << " ";
-	}
-	cout << endl;
-	heapSort(v, v.size());
-	for (int i = 0; i < size; ++i)
-	{
-		cout << v[i] << " ";
-	}
-	cout << endl;
-
-	cout << "MergeSort test:" << endl;
-	for (int i = 0; i < size; ++i)
-	{
-		v[i] = rand() % 100;
-		cout << v[i] << " ";
-	}
-	cout << endl;
-	mergeSort(v, 0, v.size());
-	for (int i = 0; i < size; ++i)
-	{
-		cout << v[i] << " ";
-	}
-	cout << endl;
-
-	
-		system("pause");
+{	
+	return 0;		
 }
